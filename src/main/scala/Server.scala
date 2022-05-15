@@ -1,10 +1,7 @@
-package edu.cmu.ckaestne.gdoc2latex.server
-
 import cask.Response
 import cask.model.StaticFile
 import com.google.api.client.googleapis.json.GoogleJsonResponseException
-import edu.cmu.ckaestne.gdoc2latex.util.GDocConnection
-import edu.cmu.ckaestne.gdoc2latex.{Context, GDoc2LatexConverter, LatexInput}
+import parser.GoogleDocParser
 import scalatags.Text.all._
 
 import java.io.{BufferedReader, File, InputStreamReader}
@@ -47,7 +44,7 @@ object GDoc2LatexWorker {
       Files.writeString(rawPath(gdocId), doc.toString)
     }
 
-    val ldoc = new GDoc2LatexConverter().convert(doc)
+    val ldoc = new GoogleDocParser().convert(doc)
     context.render(ldoc)
   }
 

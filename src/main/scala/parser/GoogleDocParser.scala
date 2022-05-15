@@ -1,11 +1,12 @@
-package edu.cmu.ckaestne.gdoc2latex
+package parser
 
 import com.google.api.services.docs.v1.model.{Document, Paragraph, ParagraphElement}
+
 import scala.jdk.CollectionConverters._
 
-case class LatexDoc(title: String, abstr: String, latexBody: String)
+import _root_.LatexDoc
 
-class GDoc2LatexConverter {
+class GoogleDocParser extends Parser {
 
   private class LatexDocBuilder {
     var title = ""

@@ -1,6 +1,3 @@
-package edu.cmu.ckaestne.gdoc2latex
-
-import edu.cmu.ckaestne.gdoc2latex.util.GDocConnection
 
 import java.io.File
 import java.nio.charset.StandardCharsets

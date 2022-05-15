@@ -1,0 +1,5 @@
+package loader
+
+trait Loader {
+
+}

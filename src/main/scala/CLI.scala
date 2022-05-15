@@ -1,13 +1,10 @@
-package edu.cmu.ckaestne.gdoc2latex.cli
-
-import edu.cmu.ckaestne.gdoc2latex.util.GDocConnection
-import edu.cmu.ckaestne.gdoc2latex.{Context, GDoc2LatexConverter}
+import parser.GoogleDocParser
 import scopt.OParser
 
 import java.io.File
 import java.nio.file.Files
 
-object GDoc2LatexCLI extends App {
+object CLI extends App {
 
   case class Config(
                      documentid: String = "",
@@ -44,7 +41,7 @@ object GDoc2LatexCLI extends App {
       val doc = GDocConnection.getDocument(config.documentid)
 
       val context = config.template.map(Context.fromFile).getOrElse(Context.defaultContext)
-      val ldoc = new GDoc2LatexConverter().convert(doc)
+      val ldoc = new GoogleDocParser().convert(doc)
 
       val latex = context.render(ldoc)
 
